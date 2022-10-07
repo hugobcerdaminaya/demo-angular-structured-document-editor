@@ -1,0 +1,20 @@
+<br>
+<h4>{{title}}</h4>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Contenido</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of documents">
+        <th scope="row">{{document.id}}</th>
+        <td>{{document.content}}</td>
+        <td><app-yaml-list-item></app-yaml-list-item></td>
+      </tr>
+    </tbody>
+</table>      
+
+
