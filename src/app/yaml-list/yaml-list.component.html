@@ -1,13 +1,6 @@
-<label class="form-label">Editor de contenido</label><br>
-<textarea class="form-control" rows="5" style="width: 100%;"
-    autocomplete="off"
-    type="text"
-    id="name"
-    #name
-    [(ngModel)]="documentName"></textarea>
-<button type="submit" class="btn btn-md btn-success btn-submit" (click)="addDocument()">Agregar contenido a la tabla</button>    
+
 <br>
-<h1>{{ documentList.title }}</h1>
+<h1>Mis documentos</h1>
 <table class="table">
     <thead>
       <tr>
@@ -17,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let document of documentItems$ | async">
+      <tr *ngFor="let document of documentLists$ | async">
         <th scope="row">{{document.id}}</th>
         <td>{{document.title}}</td>
         <td><app-yaml-list-item></app-yaml-list-item></td>
