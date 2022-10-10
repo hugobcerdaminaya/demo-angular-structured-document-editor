@@ -1,49 +1,34 @@
 import Dexie, { Table } from 'dexie';
 
-export interface Document {
-  id?: number;
-  name: string;
-}
-
 export interface DocumentList {
   id?: number;
   title: string;
 }
-export interface DocumentItem {
-  id?: number;
-  documentListId: number;
-  title: string;
-  done?: boolean;
-}
+
 
 export class AppDB extends Dexie {
-  documentItems!: Table<DocumentItem, number>;
   documentLists!: Table<DocumentList, number>;
 
   constructor() {
     super('ngdexieliveQuery');
-    this.version(3).stores({
+    this.version(2).stores({
       documentLists: '++id',
-      documentItems: '++id, documentListId',
-    });
+  });
     this.on('populate', () => this.populate());
   }
 
   async populate() {
-    const documentListId = await db.documentLists.add({
-      title: 'Mis documentos',
-    });
-    /*await db.documentItems.bulkAdd([
+    const id = await db.documentLists.bulkAdd([
       {
-        documentListId,
-        title: 'Contenido YAML 1',
+        title: 'Mi primero'
       },
-    ]);*/
+      {
+        title: 'Mi segundo'
+      }, ]);
   }
 
   async resetDatabase() {
-    await db.transaction('rw', 'documentItems', 'documentLists', () => {
-      this.documentItems.clear();
+    await db.transaction('rw', 'documentLists', () => {
       this.documentLists.clear();
       this.populate();
     });
