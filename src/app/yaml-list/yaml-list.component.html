@@ -13,7 +13,7 @@
       <tr *ngFor="let document of documentLists$ | async">
         <th scope="row">{{document.id}}</th>
         <td>{{document.title}}</td>
-        <td><app-yaml-list-item></app-yaml-list-item></td>
+        <td><app-yaml-list-item [document]="document" (valueEdit)='editDocument($event)'></app-yaml-list-item></td>
       </tr>
     </tbody>
 </table>      

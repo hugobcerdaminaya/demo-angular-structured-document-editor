@@ -5,4 +5,5 @@
     id="name"
     #name
     [(ngModel)]="documentName"></textarea>
-<button type="submit" class="btn btn-md btn-success btn-submit" (click)="addDocument()">Agregar contenido a la tabla</button>    
+<button type="submit" id="btn-add-content" class="btn btn-md btn-success btn-submit" (click)="addDocument()">Agregar contenido a la tabla</button>  
+<app-yaml-list (valueEdit)='editDocument($event)'></app-yaml-list>  

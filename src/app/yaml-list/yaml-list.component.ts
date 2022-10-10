@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { db, DocumentList} from 'src/db/db';
 import { liveQuery } from 'dexie';
 
@@ -9,11 +9,15 @@ import { liveQuery } from 'dexie';
 })
 export class YamlListComponent implements OnInit {
   documentLists$ = liveQuery(() => this.listDocuments());
+  @Output() valueEdit = new EventEmitter();
+  
   async listDocuments() {
     return await db.documentLists.toArray();
   }
 
-  
+  async editDocument(documentList:any) {
+    await this.valueEdit.emit(documentList);
+  }
   constructor() { }
 
   ngOnInit(): void {

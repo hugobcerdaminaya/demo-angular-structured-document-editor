@@ -1,5 +1,4 @@
-import { Component, VERSION } from '@angular/core';
-import { liveQuery } from 'dexie';
+import { Component } from '@angular/core';
 import { db } from '../db/db';
 @Component({
   selector: 'app-root',
