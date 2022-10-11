@@ -1,9 +1,11 @@
 <label class="form-label">Editor de contenido</label><br>
-<textarea class="form-control" rows="5" style="width: 100%;"
+<textarea class="form-control" rows="7" style="width: 100%;"
     autocomplete="off"
     type="text"
     id="name"
     #name
-    [(ngModel)]="documentName"></textarea>
-<button type="submit" id="btn-add-content" class="btn btn-md btn-success btn-submit" (click)="addDocument()">Agregar contenido a la tabla</button>  
+    placeholder="{{somePlaceholder}}"
+    [(ngModel)] = "documentName"
+    (keyup)="validateYaml()"></textarea>
+<button type="submit" id="btn-add-content" class="btn btn-md btn-success btn-submit" (click)="addDocument()" [disabled]="disabled">Agregar contenido a la tabla</button>  
 <app-yaml-list (valueEdit)='editDocument($event)'></app-yaml-list>  

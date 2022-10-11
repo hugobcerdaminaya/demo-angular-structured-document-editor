@@ -20,10 +20,20 @@ export class AppDB extends Dexie {
   async populate() {
     const id = await db.documentLists.bulkAdd([
       {
-        title: 'Mi primero'
+        title: 
+        `{
+          "name":"Pedro",
+          "email":"pedro@gmail.com",
+          "password":"123456789"
+        }`
       },
       {
-        title: 'Mi segundo'
+        title: 
+        `{
+          "name":"Daniela",
+          "email":"daniela@gmail.com",
+          "password":"123456789"
+        }`
       }, ]);
   }
 
