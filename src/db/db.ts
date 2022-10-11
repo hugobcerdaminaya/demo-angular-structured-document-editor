@@ -11,7 +11,7 @@ export class AppDB extends Dexie {
 
   constructor() {
     super('ngdexieliveQuery');
-    this.version(2).stores({
+    this.version(1).stores({
       documentLists: '++id',
   });
     this.on('populate', () => this.populate());
@@ -21,19 +21,17 @@ export class AppDB extends Dexie {
     const id = await db.documentLists.bulkAdd([
       {
         title: 
-        `{
-          "name":"Pedro",
-          "email":"pedro@gmail.com",
-          "password":"123456789"
-        }`
+        ` name: Pedro,
+          email: pedro@gmail.com,
+          password: "123456789"
+        `
       },
       {
         title: 
-        `{
-          "name":"Daniela",
-          "email":"daniela@gmail.com",
-          "password":"123456789"
-        }`
+        ` name: Daniela,
+          email: daniela@gmail.com,
+          password: qwerty
+        `
       }, ]);
   }
 
